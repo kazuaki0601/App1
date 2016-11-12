@@ -11,35 +11,45 @@ namespace App1
     {
         public MenuPage()
         {
-            var label = new Label();
-            var btnNext = new Button()
+            Title = "メニューページ";
+
+          //5*5のグリッド作成
+            Grid grid = new Grid
             {
-                Text = "次へ"
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                RowDefinitions =
+                {
+                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+                    new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+                },
+                ColumnDefinitions =
+                {
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
+                }
             };
-            btnNext.Clicked += btnNext_Clicked;
-            label.HorizontalTextAlignment = TextAlignment.Center;
 
-            // The root page of your application
+            this.Content = grid;
 
-            var stackLayout = new StackLayout
-            {
-                VerticalOptions = LayoutOptions.Center,
-                Children = {
-                        new Label {
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        },btnNext,
-                        label
-                    }
-            };
-            
-            this.Content = stackLayout;
-        }
+            // ボタンイベント
+            grid.Children.Add(new Button { Text = "電卓", Command = new Command(() => Navigation.PushAsync(new CalcPage())) }, 0, 1);
 
+            grid.Children.Add(new Button { Text = "ボタン2", }, 1, 1);
+            grid.Children.Add(new Button { Text = "ボタン3", }, 2, 1);
+            grid.Children.Add(new Button { Text = "ボタン3", }, 3, 1);
+            grid.Children.Add(new Button { Text = "ボタン3", }, 4, 1);
+            grid.Children.Add(new Button { Text = "ボタン1", }, 0, 2);
+            grid.Children.Add(new Button { Text = "ボタン2", }, 1, 2);
+            grid.Children.Add(new Button { Text = "ボタン3", }, 2, 2);
+            grid.Children.Add(new Button { Text = "ボタン3", }, 3, 2);
+            grid.Children.Add(new Button { Text = "ボタン3", }, 4, 2);
 
-        void btnNext_Clicked(object sender, EventArgs e)
-        {
-            
         }
     }
 }
