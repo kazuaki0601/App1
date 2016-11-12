@@ -13,6 +13,8 @@ namespace App1
         {
             
 
+
+
             MainPage = new NavigationPage(new MenuPage());
 
         }
